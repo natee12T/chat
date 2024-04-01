@@ -17,7 +17,7 @@ const server = app.listen(process.env.PORT || 3000, () => {
 const io = socketio(server);
 
 io.on("connection", (socket) => {
-    console.log("New user connected");
+    console.log("New user connected 8");
 
     socket.username = "Anonymous"
 
