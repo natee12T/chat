@@ -24,4 +24,19 @@ io.on("connection", (socket) => {
     socket.on("change_username", data => {
         socket.username = data.username
     })
+
+    //handle the new message event
+    socket.on("new_message", data => {
+        console.log("new message");
+        io.sockets.emit("receive_message", { message: data.message, username: socket.username})
+    })
+
+    socket.on('typing', data => {
+        socket.broadcast.emit('typing', { username: socket.username})
+    })
+
+    // User Disconnect
+    socket.on('disconnect', () => {
+        console.log('user disconnected')
+    })
 });
